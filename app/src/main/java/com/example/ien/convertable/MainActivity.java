@@ -46,29 +46,24 @@ public class MainActivity extends AppCompatActivity {
         to = (EditText) findViewById(R.id.to);
         textView = (TextView) findViewById(R.id.textView);
         infoText = (TextView) findViewById(R.id.infoText);
-
+/** RxМагия: Загружаем и закидываем данные в textView
+ * */
         RxView.clicks(button)
                 .subscribe(aVoid -> loadCurrencyExchangeData(), error -> System.out.println("Error!"));
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-    }
-
+/**Простое сохранение данных при повороте экрана**/
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("count", textView.getText().toString());
         Log.d(LOG_TAG, "onSaveInstanceState");
-    }
+    } // Сохраняем
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         textView.setText(savedInstanceState.getString("count"));
         Log.d(LOG_TAG, "onRestoreInstanceState");
-    }
+    } // Достаем
 
     private void loadCurrencyExchangeData() {
 
@@ -128,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-    }
+    } // Отправка запроса, в случае успеха -> передаем данные на рендер
 
     private void dataRender(String s) {
         DecimalFormat decimalFormat = new DecimalFormat("#,###.#####"); //можно поиграть с форматом отображения
         double dbl = Double.parseDouble(s);
         textView.setText(decimalFormat.format(dbl));
-    }
+    } //рендерим
 
 
 }

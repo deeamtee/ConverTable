@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Конвертер валют</string>
+
+    <string-array name="value">
+        <item>RUB</item>
+        <item>EUR</item>
+        <item>USD</item>
+    </string-array>
+
+    <string-array name="valOpen">
+        <item>RUB</item>
+        <item>EUR</item>
+        <item>USD</item>
+    </string-array>
+</resources>
